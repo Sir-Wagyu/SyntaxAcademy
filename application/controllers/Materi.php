@@ -8,38 +8,32 @@ class Materi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('validasi');
+        $this->load->model('kursus_model');
         $this->validasi->validasi_admin();
     }
 
     function index()
     {
-        $data['form'] = $this->load->view('admin_view/materiForm_view', '', true);
+        $data['kursus'] = $this->kursus_model->get_all_kursus();
+        $data['form'] = $this->load->view('admin_view/materiForm_view', $data, true);
         $data['tabel'] = $this->load->view('admin_view/materiTabel_view', '', true);
         $this->load->view('admin_view/admin_view', $data);
     }
 
     function simpanMateri()
     {
-        $judul = $this->input->post('judul');
-        $image_url = $this->input->post('image_url');
-        $level = $this->input->post('level');
-        $description = $this->input->post('deskripsi');
+        $judul = $this->input->post('judul_materi');
+        $video_url = $this->input->post('video_url');
+        $konten = $this->input->post('konten');
 
         $data = array(
-            'image_url' => $image_url,
-            'judul' => $judul,
-            'description' => $description,
-            'level' => $level,
+            'judul_materi' => $judul,
+            'video_url' => $video_url,
+            'konten' => $konten,
         );
 
         $this->db->insert('materi', $data);
         $this->session->set_flashdata('notification', 'Data Materi telah tersimpan');
-        redirect('Dashboard/materi', 'refresh');
-    }
-
-    function readMateri()
-    {
-        $data['materi'] = $this->db->get_all_materi();
-        $this->load->view('admin_view/materi_view', $data);
+        redirect('materi', 'refresh');
     }
 }

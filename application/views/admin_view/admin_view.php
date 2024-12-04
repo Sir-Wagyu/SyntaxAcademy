@@ -60,9 +60,9 @@
                     </button>
 
                     <div id="dropdownContent" class="hidden w-full flex-row">
-                        <a href="?page=kursus" class="hover:bg-gray-100 block ps-12 whitespace-nowrap p-2 ">Kursus</a>
-                        <a href="<?php echo base_url('kursus') ?>" class="hover:bg-gray-100 block ps-12 whitespace-nowrap p-2 ">Kursus 2</a>
-                        <a href="?page=materi" class="hover:bg-gray-100 block ps-12 whitespace-nowrap p-2 ">Materi</a>
+
+                        <a href="<?php echo base_url('kursus') ?>" class="hover:bg-gray-100 block ps-12 whitespace-nowrap p-2 ">Kursus</a>
+                        <a href="<?php echo base_url('materi') ?>" class="hover:bg-gray-100 block ps-12 whitespace-nowrap p-2 ">Materi</a>
                     </div>
 
 
@@ -85,8 +85,6 @@
 
     <!-- konten -->
     <div class="p-4 sm:ml-64">
-        <!-- modal notification -->
-
 
         <!-- modal exit -->
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
@@ -136,6 +134,7 @@
 
 
             ?>
+
 
             <?php
             // $allowed_pages = array('dashboard', 'users', 'materi', 'kursus');
