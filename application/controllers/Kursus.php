@@ -8,7 +8,8 @@ class Kursus extends CI_Controller
     {
         parent::__construct();
         $this->load->model('validasi');
-        $this->load->model('kursus_model'); // Pastikan nama model sesuai
+        $this->load->model('kursus_model');
+        $this->load->model('materi_model');
         $this->validasi->validasi_admin();
     }
 
@@ -46,9 +47,10 @@ class Kursus extends CI_Controller
         // echo "ID Kursus yang akan dihapus: $id_kursus";
         // exit;
 
-        $this->db->where('id_kursus', $id_kursus);
-        $this->db->delete('kursus');
+        $this->kursus_model->delete_kursus($id_kursus);
         $this->session->set_flashdata('notification', 'Data Kursus telah terhapus');
         redirect('kursus', 'refresh');
     }
+
+    function updateKursus($id_kursus) {}
 }
