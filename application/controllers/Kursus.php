@@ -52,5 +52,22 @@ class Kursus extends CI_Controller
         redirect('kursus', 'refresh');
     }
 
-    function updateKursus($id_kursus) {}
+    function updateKursus($id_kursus)
+    {
+        $judul = $this->input->post('judul');
+        $image_url = $this->input->post('image_url');
+        $level = $this->input->post('level');
+        $description = $this->input->post('description');
+
+        $data = array(
+            'image_url' => $image_url,
+            'judul' => $judul,
+            'description' => $description,
+            'level' => $level,
+        );
+
+        $this->kursus_model->update_kursus($id_kursus, $data);
+        $this->session->set_flashdata('notification', 'Data Kursus telah terupdate');
+        redirect('kursus', 'refresh');
+    }
 }

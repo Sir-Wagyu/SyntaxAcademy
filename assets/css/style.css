@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 /* style.css */
 body {
 	font-family: poppins, sans-serif;
@@ -19,4 +20,8 @@ h1 {
 
 p {
 	color: #333;
+}
+
+.exo2 {
+	font-family: "Exo 2", sans-serif;
 }

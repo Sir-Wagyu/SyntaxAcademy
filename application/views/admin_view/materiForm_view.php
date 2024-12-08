@@ -28,9 +28,9 @@
             <div class="lg:w-1/2">
                 <div class="flex flex-col gap-2">
                     <label for="konten" class="font-medium">Konten</label>
-                    <input type="text" name="konten" id="konten" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
+                    <textarea name="konten" id="konten" rows="6" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 "></textarea>
                 </div>
-                <button type="submit" data-modal-target="notification-modal" data-modal-toggle="notification-modal" class="w-full mt-8 bg-warna-400 text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Materi</button>
+                <button type="submit" data-modal-target="notification-modal" data-modal-toggle="notification-modal" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Materi</button>
             </div>
         </form>
     </div>

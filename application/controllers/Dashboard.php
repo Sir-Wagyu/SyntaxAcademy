@@ -17,22 +17,23 @@ class Dashboard extends CI_Controller
         $this->load->view('admin_view/admin_view', $data);
     }
 
-    public function kursus()
-    {
-        $data['form'] = $this->load->view('admin_view/kursusForm_view', '', true);
-        $data['kursus'] = $this->kursus_model->get_all_kursus();
+    // ganti pake ini kalo mau routingnya lebih rapi
+    // public function kursus()
+    // {
+    //     $data['form'] = $this->load->view('admin_view/kursusForm_view', '', true);
+    //     $data['kursus'] = $this->kursus_model->get_all_kursus();
 
-        $data['tabel'] = $this->load->view('admin_view/kursusTabel_view', $data, true);
-        $this->load->view('admin_view/admin_view', $data);
-    }
+    //     $data['tabel'] = $this->load->view('admin_view/kursusTabel_view', $data, true);
+    //     $this->load->view('admin_view/admin_view', $data);
+    // }
 
-    public function materi()
-    {
-        $data['materi'] = $this->materi_model->get_all_materi();
-        $data['kursus'] = $this->kursus_model->get_all_kursus();
-        $data['form'] = $this->load->view('admin_view/materiForm_view', $data, true);
-        $data['tabel'] = $this->load->view('admin_view/materiTabel_view', '', true);
+    // public function materi()
+    // {
+    //     $data['materi'] = $this->materi_model->get_all_materi();
+    //     $data['kursus'] = $this->kursus_model->get_all_kursus();
+    //     $data['form'] = $this->load->view('admin_view/materiForm_view', $data, true);
+    //     $data['tabel'] = $this->load->view('admin_view/materiTabel_view', '', true);
 
-        $this->load->view('admin_view/admin_view', $data);
-    }
+    //     $this->load->view('admin_view/admin_view', $data);
+    // }
 }

@@ -10,9 +10,8 @@ module.exports = {
 			fontFamily: {
 				poppins: ["Poppins", "sans-serif"],
 				quicksand: ["Quicksand", "sans-serif"],
-
 				roboto: ["Roboto", "sans-serif"],
-				exo2: ["Exo 2", "sans-serif"],
+				exo: ["Exo 2", "sans-serif"],
 			},
 			colors: {
 				warna: {

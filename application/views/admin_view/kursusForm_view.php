@@ -24,9 +24,10 @@
             <div class="lg:w-1/2">
                 <div class="flex flex-col gap-2">
                     <label for="deskripsi" class="font-medium">Deskripsi</label>
-                    <input type="text" name="deskripsi" id="deskripsi" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 " required>
+                    <!-- <input type="text" name="deskripsi" id="deskripsi" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 " required> -->
+                    <textarea name="deskripsi" id="deskripsi" rows="6" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 " required></textarea>
                 </div>
-                <button type="submit" class="text-center cursor-pointer w-full mt-8 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Kursus</button>
+                <button type="submit" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Kursus</button>
             </div>
         </form>
     </div>

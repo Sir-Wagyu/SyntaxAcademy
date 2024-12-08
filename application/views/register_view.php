@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syntax Academy</title>
     <link rel="stylesheet" href="<?= base_url('/assets/css/output.css?v=') . time(); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 </head>
 
 <body class="px-4 xs:px-6 w-screen h-screen flex flex-col items-center justify-center">
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 font-poppins">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="<?php echo base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"> -->
+                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto">Syntax Academy</span>
+            </a>
+        </div>
+    </nav>
     <div class="md:w-1/2 lg:w-[38%] xl:w-[30%]">
         <div>
             <img src="" alt="">
@@ -47,7 +56,7 @@
                 <button type="submit" class="w-full mt-8 bg-warna-400 text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Daftar</button>
             </form>
         </div>
-        <p class="mt-4 text-center font-roboto">Sudah punya akun? <a href="<?= site_url('/'); ?>" class="text-warna-400 font-bold">Login</a></p>
+        <p class="mt-4 text-center font-roboto">Sudah punya akun? <a href="<?= site_url('auth/login'); ?>" class="text-warna-400 font-bold">Login</a></p>
     </div>
 </body>
 

@@ -32,18 +32,24 @@
                                 <?php echo $n; ?>
                             </th>
                             <td class="px-6 py-4">
-                                <?php echo $k->judul; ?>
+                                <p class="line-clamp-1">
+                                    <?php echo $k->judul; ?>
+                                </p>
                             </td>
                             <td class="px-6 py-4">
                                 <img src="<?php echo $k->image_url; ?>" alt="" class="w-14 aspect-square">
                             </td>
                             <td class="px-6 py-4">
-                                <?php echo $k->description; ?>
+                                <p class="line-clamp-1">
+                                    <?php echo $k->description; ?>
+                                </p>
                             </td>
                             <td class="px-6 py-4">
-                                <?php echo $k->level; ?>
+                                <p>
+                                    <?php echo $k->level; ?>
+                                </p>
                             </td>
-                            <td class="flex items-center px-6 py-4 gap-3">
+                            <td class="flex justify-center items-center px-6 py-4 gap-3">
                                 <a href="?edit=<?php echo $k->id_kursus ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" data-modal-target="update-modal" data-modal-toggle="update-modal">Edit</a>
                                 <a href="<?php echo base_url('kursus/hapusKursus/' . $k->id_kursus); ?>" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-3">Remove</a>
                             </td>
@@ -63,10 +69,10 @@
 <!-- modal form update -->
 <?php if (isset($_GET['edit'])): ?>
     <?php
+    $level = ['mudah', 'menengah', 'sulit'];
     $this->load->model('kursus_model');
     $k = $this->kursus_model->getKursusById($_GET['edit']);
     ?>
-    <pre><?php print_r($k); ?></pre>
 
     <!-- buat munculin modalnya -->
     <?php
@@ -107,31 +113,30 @@
                 <form class="p-4 md:p-5" method="post" id="formEditMateri" action="<?php echo base_url('kursus/updateKursus/' . $k->id_kursus) ?>">
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
-                            <label for="judul_materi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul Materi</label>
-                            <input type="text" name="judul_materi" id="judul_materi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="<?php echo $k->judul ?>">
+                            <label for="judul" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul Materi</label>
+                            <input type="text" name="judul" id="judul" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="<?php echo $k->judul ?>">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="video_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image URL</label>
-                            <input type="url" name="video_url" id="video_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value='<?php echo $k->image_url ?>'>
+                            <label for="image_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image URL</label>
+                            <input type="url" name="image_url" id="image_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value='<?php echo $k->image_url ?>'>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="kursus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Level</label>
-                            <select id="kursus" name="id_kursus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <?php foreach ($kursus as $k): ?>
-                                    <option value="<?php echo $k->level ?>" <?php echo ($k->id_kursus == $_GET['edit']) ? 'selected' : ''; ?>>
-                                        <?php echo $k->level; ?>
+                            <label for="level" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Level</label>
+                            <select id="level" name="level" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <?php foreach ($level as $lvl): ?>
+                                    <option value="<?php echo $lvl; ?>" <?php echo ($lvl === $k->level) ? 'selected' : ''; ?>>
+                                        <?php echo $lvl; ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
                         <div class="col-span-2">
-                            <label for="konten" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konten</label>
-                            <textarea id="konten" name="konten" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"><?php echo $k->description ?></textarea>
+                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                            <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"><?php echo $k->description ?></textarea>
                         </div>
                     </div>
                     <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Update Data Materi
+                        Update Data Kursus
                     </button>
                 </form>
             </div>
@@ -154,8 +159,6 @@
             });
         });
     </script>
-
-
 
 
 

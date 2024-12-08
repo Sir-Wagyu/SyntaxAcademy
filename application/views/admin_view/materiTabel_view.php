@@ -35,13 +35,19 @@
                                     <?php echo $m->kursus ?>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <?php echo $m->video_url ?>
+                                    <p class="line-clamp-2">
+                                        <?php echo $m->video_url ?>
+                                    </p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <?php echo $m->judul ?>
+                                    <p class="line-clamp-2">
+                                        <?php echo $m->judul ?>
+                                    </p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <?php echo $m->konten ?>
+                                    <p class="line-clamp-2">
+                                        <?php echo $m->konten ?>
+                                    </p>
                                 </td>
 
                                 <td class="flex items-center px-6 py-4">

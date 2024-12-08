@@ -5,10 +5,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends CI_Controller
 {
 
-    public function index()
-    {
-        $this->load->view('login_view');
-    }
 
     public function prosesLogin()
     {
@@ -20,7 +16,7 @@ class Auth extends CI_Controller
 
         if (empty($email) || empty($password)) {
             $this->session->set_flashdata('pesanLogin', 'Email dan Password tidak boleh kosong.');
-            redirect('/', 'refresh');
+            redirect('auth/login', 'refresh');
         }
 
         if ($query->num_rows() > 0) {
@@ -34,15 +30,25 @@ class Auth extends CI_Controller
                     'role' => $data->role,
                 );
                 $this->session->set_userdata($array);
-                redirect('Dashboard', 'refresh');
+                if ($data->role == 'admin') {
+                    redirect('Dashboard', 'refresh');
+                } else {
+                    redirect('/', 'refresh');
+                }
             } else {
+
                 $this->session->set_flashdata('pesanLogin', 'Passwordnya salah nih. coba lagi ya!');
-                redirect('/', 'refresh');
+                redirect('auth/login', 'refresh');
             }
         } else {
             $this->session->set_flashdata('pesanLogin', 'Emailnya belum terdaftar nih. Register dulu ya!');
-            redirect('/', 'refresh');
+            redirect('auth/login', 'refresh');
         }
+    }
+
+    public function login()
+    {
+        $this->load->view('login_view.php');
     }
 
 
@@ -77,12 +83,12 @@ class Auth extends CI_Controller
 
         if ($query->num_rows() > 0) {
             $this->session->set_flashdata('pesanRegister', 'email sudah terdaftar');
-            redirect('aunth/register', 'refresh');
+            redirect('auth/register', 'refresh');
         } else {
             $sql = "insert into users (nama, email, password, role) values (?,?,?,?)";
             $this->db->query($sql, $data);
             $this->session->set_flashdata('pesanRegister', 'berhasil daftar');
-            redirect('aunth', 'refresh');
+            redirect('auth/register', 'refresh');
         }
     }
 
