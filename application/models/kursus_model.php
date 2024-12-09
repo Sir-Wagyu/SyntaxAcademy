@@ -27,7 +27,7 @@ class Kursus_model extends CI_Model
 
     public function listMateri($id_kursus)
     {
-        $this->db->select('m.id_materi, m.judul, m.video_url');
+        $this->db->select('m.id_materi, m.judul, m.video_url, m.konten');
         $this->db->from('materi m');
         $this->db->where('m.kursus_id_kursus', $id_kursus);
         $query = $this->db->get();
@@ -48,5 +48,14 @@ class Kursus_model extends CI_Model
     {
         $this->db->where('id_kursus', $id_kursus);
         $this->db->update('kursus', $data);
+    }
+
+    public function getMateriById($id_materi)
+    {
+        $this->db->select('id_materi, judul, video_url, konten');
+        $this->db->from('materi');
+        $this->db->where('id_materi', $id_materi);
+        $query = $this->db->get();
+        return $query->row();
     }
 }

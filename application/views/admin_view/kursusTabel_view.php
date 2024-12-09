@@ -40,8 +40,8 @@
                                 <img src="<?php echo $k->image_url; ?>" alt="" class="w-14 aspect-square">
                             </td>
                             <td class="px-6 py-4">
-                                <p class="line-clamp-1">
-                                    <?php echo $k->description; ?>
+                                <p class="line-clamp-2">
+                                    <?php echo $k->description ?>
                                 </p>
                             </td>
                             <td class="px-6 py-4">
