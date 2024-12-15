@@ -6,6 +6,7 @@ class Auth extends CI_Controller
 {
 
 
+    // minor bug -> status subscription tidak realtime -> buatin method model user buat ngeselect tb user + statusnya si tb user_subscription 
     public function prosesLogin()
     {
         $email = $this->input->post('email');
@@ -23,11 +24,16 @@ class Auth extends CI_Controller
             $data = $query->row();
 
             if ($data->password == $password) {
+                $sqlSubscription = "select status from user_subscriptions where users_id_user = ?";
+                $querySubscription = $this->db->query($sqlSubscription, array($data->id_user));
+                $subscriptionStatus = $querySubscription->row()->status;
+
                 $array = array(
                     'id_user' => $data->id_user,
                     'nama' => $data->nama,
                     'email' => $data->email,
                     'role' => $data->role,
+                    'status' => $subscriptionStatus,
                 );
                 $this->session->set_userdata($array);
                 if ($data->role == 'admin') {
@@ -36,7 +42,6 @@ class Auth extends CI_Controller
                     redirect('/', 'refresh');
                 }
             } else {
-
                 $this->session->set_flashdata('pesanLogin', 'Passwordnya salah nih. coba lagi ya!');
                 redirect('auth/login', 'refresh');
             }
@@ -76,6 +81,7 @@ class Auth extends CI_Controller
             'email' => $email,
             'password' => $password,
             'role' => $role,
+            'created_at' => date('Y-m-d H:i:s')
         );
 
         $sql = "select * from users where email = ?";
@@ -85,8 +91,21 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('pesanRegister', 'email sudah terdaftar');
             redirect('auth/register', 'refresh');
         } else {
-            $sql = "insert into users (nama, email, password, role) values (?,?,?,?)";
+            $sql = "insert into users (nama, email, password, role, created_at) values (?,?,?,?,?)";
             $this->db->query($sql, $data);
+
+
+            $userId = $this->db->insert_id();
+            $subscriptionData = array(
+                'users_id_user' => $userId,
+                'status' => 'free',
+                'tanggal_selesai' => null,
+                'tanggal_mulai' => null,
+            );
+            $sqlSubscription = "insert into  user_subscriptions (users_id_user, status, tanggal_selesai, tanggal_mulai) values (?,?,?,?)";
+            $this->db->query($sqlSubscription, $subscriptionData);
+
+
             $this->session->set_flashdata('pesanRegister', 'berhasil daftar');
             redirect('auth/register', 'refresh');
         }

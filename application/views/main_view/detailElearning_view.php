@@ -12,15 +12,15 @@
             </div>
         </div>
     </div>
-    <div class="mt-10 w-full flex gap-10">
+    <div class="mt-10 w-full flex flex-col lg:flex-row gap-10">
         <!-- desc     -->
-        <div class="px-5 py-6 w-[60%] border rounded-md shadow">
+        <div class="px-5 py-6 w-full lg:w-[60%] border rounded-md shadow">
             <h1 class="text-warna-400 text-xl font-semibold mb-3">Tentang Kelas Ini</h1>
             <div class="text-pretty text-justify"><?php echo nl2br($kursus->description) ?></div>
         </div>
 
         <!-- materi -->
-        <div class="px-5 py-6 w-[40%] border h-max rounded-md shadow">
+        <div class="px-5 py-6 w-full lg:w-[40%] border h-max rounded-md shadow">
             <h1 class="text-warna-400 text-xl font-semibold mb-3">Materi</h1>
             <?php if (!empty($listMateri)): ?>
                 <?php foreach ($listMateri as $listMateri): ?>

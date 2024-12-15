@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syntax Academy</title>
     <link rel="stylesheet" href="<?= base_url('/assets/css/output.css?v=') . time(); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- midtrans -->
+    <script type="text/javascript"
+        src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-g8nm10GiwT2y9Y20"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -64,6 +71,9 @@
                         <a href="<?php echo base_url('elearning') ?>" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-warna-300 md:p-0 md:dark:hover:text-warna-300 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">E-Learning</a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url('pricing') ?>" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-warna-300 md:p-0 md:dark:hover:text-warna-300 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                    </li>
+                    <li>
                         <a href="<?php echo base_url('contact') ?>" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-warna-300 md:p-0 md:dark:hover:text-warna-300 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
                     </li>
                     <li class="md:hidden flex flex-col gap-2 mt-4 mx-2">
@@ -85,9 +95,73 @@
         };
         ?>
 
-
     </div>
 
+    <script type="text/javascript">
+        $('.pay-button').click(function(event) {
+            event.preventDefault();
+            $(this).attr("disabled", "disabled");
+
+            let id_user = $('#id_user').val();
+            let nama = $('#nama').val();
+            let email = $('#email').val();
+            let status = $('#status').val();
+
+            let id_langganan = $('#id_langganan').val();
+            let durasi = $('#durasi').val();
+            let harga = $('#harga').val();
+            $.ajax({
+                type: 'POST',
+                url: '<?= site_url() ?>/snap/token',
+                data: {
+                    id_user: id_user,
+                    nama: nama,
+                    email: email,
+                    status: status,
+                    id_langganan: id_langganan,
+                    durasi: durasi,
+                    harga: harga
+                },
+                cache: false,
+
+                success: function(data) {
+                    //location = data;
+
+                    console.log('token = ' + data);
+
+                    var resultType = document.getElementById('result-type');
+                    var resultData = document.getElementById('result-data');
+
+                    function changeResult(type, data) {
+                        $("#result-type").val(type);
+                        $("#result-data").val(JSON.stringify(data));
+                        //resultType.innerHTML = type;
+                        //resultData.innerHTML = JSON.stringify(data);
+                    }
+
+                    snap.pay(data, {
+
+                        onSuccess: function(result) {
+                            changeResult('success', result);
+                            console.log(result.status_message);
+                            console.log(result);
+                            $("#payment-form").submit();
+                        },
+                        onPending: function(result) {
+                            changeResult('pending', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        },
+                        onError: function(result) {
+                            changeResult('error', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
     <script src="<?= base_url('node_modules/flowbite/dist/flowbite.min.js'); ?>"></script>
 </body>
