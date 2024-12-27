@@ -1,8 +1,5 @@
-<div class="max-w-screen-xl mx-auto p-4">
-    <pre>
-        <?php echo print_r($this->session->userdata()) ?>
-    </pre>
-    <div class="w-full flex flex-col md:flex-row justify-center md:mt-32 lg:mt-40 flex-wrap">
+<div class="max-w-screen-xl h-screen mx-auto pt-20 px-4 flex items-center justify-center">
+    <div class="w-full flex flex-col md:flex-row justify-center pt-[35rem] md:pt-0 flex-wrap">
         <?php foreach ($subscriptions as $s): ?>
             <div class=" py-7 px-4 bg-white w-full md:w-[33%] h-96 md:h-[25rem] border shadow rounded-md">
                 <form class="w-full h-full" id="payment-form" method="post" action="<?= site_url() ?>/snap/finish">
@@ -22,7 +19,7 @@
                     <div class="flex flex-col items-center justify-between h-full">
                         <div class="flex flex-col items-center">
                             <h2><?= $s->namaPaket ?></h2>
-                            <h3><?= $s->durasi ?></h3>
+                            <h3><?= $s->durasi ?> Bulan</h3>
                             <h1 class="text-3xl font-semibold">Rp <?= number_format($s->harga, 0, ',', '.') ?></h1>
                         </div>
 
@@ -45,14 +42,10 @@
                             </ul>
                         </div>
 
-                        <!-- debug -->
-                        <a href="<?= site_url('pricing/detailTranscation' . '/' . $s->id_langganan) ?>">test</a>
-                        <button id="pay-button" class="pay-button px-5 py-3 rounded-md bg-warna-300 hover:bg-transparent hover:text-warna-300 hover:border hover:border-warna-300 text-white font-semibold active:scale-95 transition-all">Mulai Berlangganan</button>
-
                         <?php if (!$this->session->userdata('role')): ?>
                             <a href="<?= base_url('auth/login') ?>" class="pay-button px-5 py-3 rounded-md bg-warna-300 hover:bg-transparent hover:text-warna-300 hover:border hover:border-warna-300 text-white font-semibold active:scale-95 transition-all">Login untuk Berlangganan</a>
                         <?php else: ?>
-                            <button id="pay-button" class="pay-button px-5 py-3 rounded-md bg-warna-300 hover:bg-transparent hover:text-warna-300 hover:border hover:border-warna-300 text-white font-semibold active:scale-95 transition-all">Mulai Berlangganan</button>
+                            <a href="<?= site_url('pricing/checkout' . '/' . $s->id_langganan) ?>" class=" px-5 py-3 rounded-md bg-warna-300 hover:bg-transparent hover:text-warna-300 hover:border hover:border-warna-300 text-white font-semibold active:scale-95 transition-all">Mulai Berlangganan!</a>
                         <?php endif; ?>
                     </div>
                 </form>
@@ -60,9 +53,6 @@
 
         <?php endforeach; ?>
     </div>
-
-
-
 
 
 </div>

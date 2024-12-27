@@ -15,7 +15,7 @@ class Pricing extends CI_Controller
         $this->load->view('main_view/main_view', $data);
     }
 
-    public function detailTranscation($id)
+    public function checkout($id)
     {
         $data['subscription'] = $this->subscription_model->getSubscriptionById($id);
         $data['konten'] = $this->load->view('main_view/detailPricing_view', $data, true);

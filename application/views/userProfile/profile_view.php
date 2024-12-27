@@ -7,20 +7,14 @@
     <title>Syntax Academy</title>
     <link rel="stylesheet" href="<?= base_url('/assets/css/output.css?v=') . time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-    <!-- midtrans -->
-    <script type="text/javascript"
-        src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-g8nm10GiwT2y9Y20"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="font-poppins">
     <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 font-poppins">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="<?php base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="<?php base_url("/") ?>" class="flex items-center rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 md:hidden" alt="Flowbite Logo">
-                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto">Syntax Academy</span>
+                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto ">Syntax Academy</span>
             </a>
             <?php $role = $this->session->userdata('role') ?>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -85,87 +79,55 @@
         </div>
     </nav>
 
-    <div class="">
+    <div class="max-w-screen-xl mx-auto pt-20 px-4 pb-10">
+        <h1 class="text-2xl font-semibold my-3">Dashboard Profil</h1>
+        <div class="lg:hidden">
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full justify-between text-warna-300 border border-warna-300 focus:ring-2 focus:outline-none focus:ring-warna-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Navigasi Profile <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg>
+            </button>
 
-        <?php
-        if (empty($konten)) {
-            echo "";
-        } else {
-            echo $konten;
-        };
-        ?>
+            <!-- Dropdown menu -->
+            <div id="dropdown" class="w-[90%] z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                    <li>
+                        <a href="<?php echo base_url('profile') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile Saya</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('profile/ganti_password') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ganti Password</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('profile/riwayat_transaksi') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat Transaksi</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('auth/logout') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-full inline-flex gap-4">
+            <div class="mt-6 hidden lg:block border border-gray-200 rounded-lg p-4 lg:w-[35%] h-max">
+                <h2 class="font-semibold pb-2 border-b border-gray-200">Navigasi Profile</h2>
+                <div>
+                    <a href="<?php echo base_url('profile') ?>" class="block mt-4 hover:text-warna-300">Profile Saya</a>
+                    <a href="<?php echo base_url('profile/ganti_password') ?>" class="block mt-4 hover:text-warna-300">Ganti Password</a>
+                    <a href="<?php echo base_url('profile/riwayat_transaksi') ?>" class="block mt-4 hover:text-warna-300">Riwayat Transaksi</a>
+                    <a href="<?php echo base_url('auth/logout') ?>" class="block mt-4 hover:text-red-500">Log out</a>
+                </div>
+            </div>
+            <div class="mt-6 border border-gray-200 rounded-lg p-4 w-full lg:w-[65%]">
+                <?php if (empty($konten)) {
+                    echo "";
+                } else {
+                    echo $konten;
+                } ?>
+            </div>
+        </div>
 
-    </div>
 
-    <script type="text/javascript">
-        $('#pay-button').click(function(event) {
-            event.preventDefault();
-            $(this).attr("disabled", "disabled");
 
-            let id_user = $('#id_user').val();
-            let nama = $('#nama').val();
-            let email = $('#email').val();
-            let status = $('#status').val();
-
-            let id_langganan = $('#id_langganan').val();
-            let namaPaket = $('#namaPaket').val();
-            let durasi = $('#durasi').val();
-            let harga = $('#harga').val();
-            $.ajax({
-                type: 'POST',
-                url: '<?= site_url() ?>/snap/token',
-                data: {
-                    id_user: id_user,
-                    nama: nama,
-                    email: email,
-                    status: status,
-                    id_langganan: id_langganan,
-                    namaPaket: namaPaket,
-                    durasi: durasi,
-                    harga: harga
-                },
-                cache: false,
-
-                success: function(data) {
-                    //location = data;
-
-                    console.log('token = ' + data);
-
-                    var resultType = document.getElementById('result-type');
-                    var resultData = document.getElementById('result-data');
-
-                    function changeResult(type, data) {
-                        $("#result-type").val(type);
-                        $("#result-data").val(JSON.stringify(data));
-                        //resultType.innerHTML = type;
-                        //resultData.innerHTML = JSON.stringify(data);
-                    }
-
-                    snap.pay(data, {
-
-                        onSuccess: function(result) {
-                            changeResult('success', result);
-                            console.log(result.status_message);
-                            console.log(result);
-                            $("#payment-form").submit();
-                        },
-                        onPending: function(result) {
-                            changeResult('pending', result);
-                            console.log(result.status_message);
-                            $("#payment-form").submit();
-                        },
-                        onError: function(result) {
-                            changeResult('error', result);
-                            console.log(result.status_message);
-                            $("#payment-form").submit();
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-
-    <script src="<?= base_url('node_modules/flowbite/dist/flowbite.min.js'); ?>"></script>
+        <script src="<?= base_url('node_modules/flowbite/dist/flowbite.min.js'); ?>"></script>
 </body>
+
 
 </html>

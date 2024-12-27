@@ -1,4 +1,4 @@
-<div class="max-w-screen-xl mx-auto p-4 font-poppins">
+<div class="max-w-screen-xl h-screen mx-auto pt-20 px-4 flex items-center justify-center">
     <div class="flex w-full">
         <?php foreach ($kursus as $k): ?>
             <a href="<?php echo base_url('elearning/detail/' . $k->id_kursus) ?>" class="w-52 lg:w-64 aspect-[4/5] border shadow-md rounded-md active:scale-95 transition-all">

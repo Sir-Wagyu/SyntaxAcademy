@@ -2,6 +2,8 @@
     <form class="w-full h-full" id="payment-form" method="post" action="<?= site_url() ?>/snap/finish">
         <input type="hidden" name="result_type" id="result-type" value="">
         <input type="hidden" name="result_data" id="result-data" value="">
+        <input type="hidden" name="id_langganan" id="id_langganan" value="<?= $subscription->id_langganan ?>">
+
 
         <input type="hidden" name="id_user" id="id_user" value="<?= $this->session->userdata('id_user') ?>">
 

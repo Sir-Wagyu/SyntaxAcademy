@@ -12,44 +12,75 @@ class Auth extends CI_Controller
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $sql = "select * from users where email = ?";
-        $query = $this->db->query($sql, array($email));
-
+        // Validasi input kosong
         if (empty($email) || empty($password)) {
             $this->session->set_flashdata('pesanLogin', 'Email dan Password tidak boleh kosong.');
             redirect('auth/login', 'refresh');
         }
 
+        // Query untuk mengambil data user berdasarkan email
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $query = $this->db->query($sql, array($email));
+
         if ($query->num_rows() > 0) {
             $data = $query->row();
 
-            if ($data->password == $password) {
-                $sqlSubscription = "select status from user_subscriptions where users_id_user = ?";
-                $querySubscription = $this->db->query($sqlSubscription, array($data->id_user));
-                $subscriptionStatus = $querySubscription->row()->status;
+            // Cek password
+            if ($data->password == $password) { // **Password cocok langsung dibandingkan**
 
-                $array = array(
-                    'id_user' => $data->id_user,
-                    'nama' => $data->nama,
-                    'email' => $data->email,
-                    'role' => $data->role,
-                    'status' => $subscriptionStatus,
-                );
-                $this->session->set_userdata($array);
-                if ($data->role == 'admin') {
-                    redirect('Dashboard', 'refresh');
+                // Query untuk mengambil data subscription user
+                $sqlSubscription = "SELECT id_userSubscriptions, status, tanggal_selesai FROM user_subscriptions WHERE users_id_user = ?";
+                $querySubscription = $this->db->query($sqlSubscription, array($data->id_user));
+
+                if ($querySubscription->num_rows() > 0) {
+                    $subscriptionData = $querySubscription->row();
+
+                    // Cek apakah subscription sudah expired
+                    $current_date = date('Y-m-d');
+                    if ($subscriptionData->tanggal_selesai < $current_date && $subscriptionData->status == 'aktif') {
+                        // Update status ke expired
+                        $this->db->set('status', 'expired');
+                        $this->db->where('id_userSubscriptions', $subscriptionData->id_userSubscriptions);
+                        $this->db->update('user_subscriptions');
+
+                        // Update data status subscription
+                        $subscriptionData->status = 'expired';
+                    }
+
+                    // Set session data
+                    $array = array(
+                        'id_user' => $data->id_user,
+                        'id_userSubscriptions' => $subscriptionData->id_userSubscriptions,
+                        'nama' => $data->nama,
+                        'email' => $data->email,
+                        'role' => $data->role,
+                        'status' => $subscriptionData->status, // Status diperbarui (expired/aktif)
+                    );
+                    $this->session->set_userdata($array);
+
+                    // Redirect berdasarkan role
+                    if ($data->role == 'admin') {
+                        redirect('Dashboard', 'refresh');
+                    } else {
+                        redirect('/', 'refresh');
+                    }
                 } else {
-                    redirect('/', 'refresh');
+                    // Jika user tidak memiliki subscription
+                    $this->session->set_flashdata('pesanLogin', 'Kamu belum memiliki subscription aktif. Silakan berlangganan.');
+                    redirect('auth/login', 'refresh');
                 }
             } else {
-                $this->session->set_flashdata('pesanLogin', 'Passwordnya salah nih. coba lagi ya!');
+                // Password salah
+                $this->session->set_flashdata('pesanLogin', 'Passwordnya salah nih. Coba lagi ya!');
                 redirect('auth/login', 'refresh');
             }
         } else {
+            // Email tidak terdaftar
             $this->session->set_flashdata('pesanLogin', 'Emailnya belum terdaftar nih. Register dulu ya!');
             redirect('auth/login', 'refresh');
         }
     }
+
 
     public function login()
     {

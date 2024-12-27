@@ -27,15 +27,18 @@ class Snap extends CI_Controller
 		$this->load->library('midtrans');
 		$this->midtrans->config($params);
 		$this->load->helper('url');
+		$this->load->database();
 	}
 
 
 	public function token()
 	{
+		$subscription_id_langganan = $this->input->post('id_langganan');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
 		$harga = $this->input->post('harga');
 		$durasi = $this->input->post('durasi');
+		$namaPaket = $this->input->post('namaPaket');
 
 		// Required
 		$transaction_details = array(
@@ -48,7 +51,7 @@ class Snap extends CI_Controller
 			'id' => 'a1',
 			'price' => $harga,
 			'quantity' => 1,
-			'name' => "Paket $durasi"
+			'name' => "Paket $namaPaket"
 		);
 
 		// Optional
@@ -86,9 +89,9 @@ class Snap extends CI_Controller
 
 		// Optional
 		$customer_details = array(
-			'first_name'    => "Andri",
-			'last_name'     => "Litani",
-			'email'         => "andri@litani.com",
+			'first_name'    => $nama,
+			// 'last_name'     => "Litani",
+			'email'         => $email,
 			'phone'         => "081122334455",
 			'billing_address'  => $billing_address,
 			'shipping_address' => $shipping_address
@@ -102,8 +105,8 @@ class Snap extends CI_Controller
 		$time = time();
 		$custom_expiry = array(
 			'start_time' => date("Y-m-d H:i:s O", $time),
-			'unit' => 'minute',
-			'duration'  => 2
+			'unit' => 'day',
+			'duration'  => 1
 		);
 
 		$transaction_data = array(
@@ -122,9 +125,43 @@ class Snap extends CI_Controller
 
 	public function finish()
 	{
-		$result = json_decode($this->input->post('result_data'));
-		echo 'RESULT <br><pre>';
-		var_dump($result);
-		echo '</pre>';
+		$users_id_user = $this->input->post('id_user');
+		$subscriptions_id_langganan = $this->input->post('id_langganan');
+		$durasi = $this->input->post('durasi');
+		$id_userSubscriptions = $this->session->userdata('id_userSubscriptions');
+		$result = json_decode($this->input->post('result_data'), true);
+
+		if ($result['status_code'] == '200') {
+			$tanggal_mulai = date("Y-m-d H:i:s", strtotime($result['transaction_time']));
+			$tanggal_selesai = date("Y-m-d H:i:s", strtotime("+$durasi months", strtotime($tanggal_mulai)));
+
+			//update data userSubscription
+			$dataUpdate = [
+				"subscriptions_id_langganan" => $subscriptions_id_langganan,
+				"status" => "aktif",
+				"tanggal_mulai" => $tanggal_mulai,
+				"tanggal_selesai" => $tanggal_selesai,
+			];
+
+			$this->db->where('id_userSubscriptions', $id_userSubscriptions);
+			$this->db->update('user_subscriptions', $dataUpdate);
+
+			//insert data pembayaran
+			$data = [
+				'users_id_user' => $users_id_user,
+				'subscriptions_id_langganan' => $subscriptions_id_langganan,
+				'order_id' => $result['order_id'],
+				'gross_amount' => $result['gross_amount'],
+				'transaction_time' => $result['transaction_time'],
+				'status_code' => $result['status_code'],
+				'payment_type' => $result['payment_type'],
+				'bank' => $result['va_numbers'][0]['bank'],
+				'va_number' => $result['va_numbers'][0]['va_number'],
+			];
+
+			$this->db->insert('pembayaran', $data);
+		}
+
+		redirect('elearning', 'refresh');
 	}
 }
