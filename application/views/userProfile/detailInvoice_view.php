@@ -80,108 +80,42 @@
     </nav>
 
     <div class="max-w-screen-xl mx-auto pt-20 px-4 pb-10">
-        <h1 class="text-2xl font-semibold my-3">Dashboard Profil</h1>
-        <div class="lg:hidden">
-            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full justify-between text-warna-300 border border-warna-300 focus:ring-2 focus:outline-none focus:ring-warna-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Navigasi Profile <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                </svg>
-            </button>
+        <div class="p-5 border border-gray-200 rounded-lg w-full lg:w-[70%] mx-auto">
+            <h1 class="text-2xl lg:text-3xl font-semibold">Invoice</h1>
+            <p>ID - <?php echo $transaksi->order_id ?></p>
+            <div class="mt-5">
+                <p class="text-sm lg:text-base text-gray-500 font-semibold">Waktu Transaksi</p>
+                <p class="text-sm lg:text-base mt-2 lg:mt-1"><?php echo $transaksi->transaction_time ?></p>
+            </div>
+            <div class="mt-5">
+                <p class="text-sm lg:text-base text-gray-500 font-semibold">Nama Produk</p>
+                <p class="text-sm lg:text-base mt-2 lg:mt-1">Paket Langganan <?php echo $transaksi->namaPaket ?></p>
+            </div>
+            <div class="mt-5">
+                <p class="text-sm lg:text-base text-gray-500 font-semibold">Metode Pembayaran</p>
+                <p class="text-sm lg:text-base mt-2 lg:mt-1"><?php echo $transaksi->payment_type ?></p>
+            </div>
+            <div class="mt-5">
+                <p class="text-sm lg:text-base text-gray-500 font-semibold">Nomor Virtual Account</p>
+                <p class="text-sm lg:text-base mt-2 lg:mt-1"><?php echo $transaksi->va_number ?></p>
+            </div>
+            <div class="mt-5">
+                <p class="text-sm lg:text-base text-gray-500 font-semibold">Total Pembelian</p>
+                <p class="text-sm lg:text-base mt-2 lg:mt-1">Rp. <?php echo number_format($transaksi->gross_amount, 0, ',', '.') ?></p>
+            </div>
+            <div class="mt-5">
+                <p class="text-sm lg:text-base text-gray-500 font-semibold">Total Pembayaran</p>
+                <p class="text-sm lg:text-base mt-2 lg:mt-1">Rp. <?php echo number_format($transaksi->gross_amount, 0, ',', '.') ?></p>
+            </div>
+            <div class="mt-8 flex flex-col lg:flex-row justify-center items-center gap-3">
+                <a href="<?php echo base_url('profile/downloadInvoice/' . $transaksi->order_id) ?>" class="w-full text-center bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-semibold py-2 px-4 md:px-6 rounded-md ">Download Invoice</a>
+                <a href="<?php echo base_url('profile/riwayat_transaksi') ?>" class="w-full text-center border border-warna-300 hover:bg-warna-300 active:scale-95 transition-all text-warna-300 hover:text-white font-semibold py-2 px-4 md:px-6 rounded-md">Kembali</a>
 
-            <!-- Dropdown menu -->
-            <div id="dropdown" class="w-[90%] z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                    <li>
-                        <a href="<?php echo base_url('profile') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile Saya</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('profile/ganti_password') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ganti Password</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('profile/riwayat_transaksi') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat Transaksi</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('auth/logout') ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log out</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="w-full inline-flex gap-4">
-            <div class="mt-6 hidden lg:block border border-gray-200 rounded-lg p-4 lg:w-[35%] h-max">
-                <h2 class="font-semibold pb-2 border-b border-gray-200">Navigasi Profile</h2>
-                <div>
-                    <a href="<?php echo base_url('profile') ?>" class="block mt-4 hover:text-warna-300">Profile Saya</a>
-                    <a href="<?php echo base_url('profile/ganti_password') ?>" class="block mt-4 hover:text-warna-300">Ganti Password</a>
-                    <a href="<?php echo base_url('profile/riwayat_transaksi') ?>" class="block mt-4 hover:text-warna-300">Riwayat Transaksi</a>
-                    <a href="<?php echo base_url('auth/logout') ?>" class="block mt-4 hover:text-red-500">Log out</a>
-                </div>
-            </div>
-            <div class="mt-6 border border-gray-200 rounded-lg p-4 w-full lg:w-[65%]">
-                <?php if (empty($konten)) {
-                    echo "";
-                } else {
-                    echo $konten;
-                } ?>
             </div>
         </div>
 
-
-
-        <?php
-        $notification = $this->session->flashdata('notification');
-
-        if (!empty($notification)) {
-            echo "<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tampilkan modal setelah halaman dimuat
-            const modal = document.getElementById('notification-modal');
-            const overlay = document.getElementById('modal-overlay');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex'); // Pastikan modal menggunakan flexbox untuk center
-            overlay.classList.remove('hidden');
-        });
-    </script>";
-        ?>
-            <div id="modal-overlay" class="w-screen h-screen fixed inset-0 bg-black/50 z-40 transition-all"></div>
-
-            <div id="notification-modal" tabindex="-1" class="hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="notification-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                        <div class="p-4 md:p-5 text-center">
-                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"><?php echo $notification ?></h3>
-                            <button data-modal-hide="notification-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tutup</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <?php
-        }
-        ?>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const closeModalButtons = document.querySelectorAll('[data-modal-hide]');
-                closeModalButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const modal = document.getElementById('notification-modal');
-                        const overlay = document.getElementById('modal-overlay');
-                        modal.classList.add('hidden');
-                        modal.classList.remove('flex');
-                        overlay.classList.add('hidden');
-                    });
-                });
-            });
-        </script>
-        <script src="<?= base_url('node_modules/flowbite/dist/flowbite.min.js'); ?>"></script>
+    </div>
+    <script src="<?= base_url('node_modules/flowbite/dist/flowbite.min.js'); ?>"></script>
 </body>
 
 

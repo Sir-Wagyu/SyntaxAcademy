@@ -6,9 +6,9 @@ class Notification extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$params = array('server_key' => 'your_server_key', 'production' => false);
+		$params = array('server_key' => 'SB-Mid-server-UfTnRnQic4bVfU-q9p6OF4Si', 'production' => false);
 		$this->load->library('midtrans');
-		$this->veritrans->config($params);
+		$this->midtrans->config($params);
 		$this->load->helper('url');
 	}
 
@@ -19,7 +19,7 @@ class Notification extends CI_Controller
 		$result = json_decode($json_result);
 
 		if ($result) {
-			$notif = $this->veritrans->status($result->order_id);
+			$notif = $this->midtrans->status($result->order_id);
 		}
 
 		error_log(print_r($result, TRUE));
