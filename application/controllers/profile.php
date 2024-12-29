@@ -42,6 +42,13 @@ class Profile extends CI_Controller
     public function editProfile()
     {
         $user = $this->session->userdata();
+
+        $config['upload_path'] = './uploads/profile_pictures/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = 2048;
+        $config['file_name'] = "profile_" . $user['id_user'];
+        $this->load->library('upload', $config);
+
         $data = [
             'nama' => $this->input->post('nama'),
             'nama_belakang' => $this->input->post('nama_belakang'),
@@ -50,8 +57,43 @@ class Profile extends CI_Controller
             'tanggal_lahir' => $this->input->post('tanggal_lahir'),
             'jenis_kelamin' => $this->input->post('jenis_kelamin')
         ];
+
+        if (!empty($_FILES['foto_profil']['name'])) {
+            $oldPhoto = $this->user_model->getUserPhoto($user['id_user']);
+            if (!empty($oldPhoto->foto_profile)) {
+                $oldPhotoPath = './uploads/profile_pictures/' . $oldPhoto->foto_profile;
+                if (file_exists($oldPhotoPath)) {
+                    unlink($oldPhotoPath);
+                }
+            }
+
+            if ($this->upload->do_upload('foto_profil')) {
+                $uploadData = $this->upload->data();
+                $data['foto_profile'] = $uploadData['file_name'];
+            } else {
+                $this->session->set_flashdata('notification', 'Gagal mengunggah foto profil.');
+                redirect('profile');
+            }
+        }
+
         $this->user_model->updateUser($user['id_user'], $data);
         $this->session->set_flashdata('notification', 'Perubahan anda berhasil disimpan.');
+        redirect('profile');
+    }
+
+    public function deleteFotoProfile()
+    {
+        $user = $this->session->userdata();
+        $oldPhoto = $this->user_model->getUserPhoto($user['id_user']);
+        $oldPhotoPath = './uploads/profile_pictures/' . $oldPhoto->foto_profile;
+        if (file_exists($oldPhotoPath)) {
+            unlink($oldPhotoPath);
+        }
+        $data = [
+            'foto_profile' => null
+        ];
+        $this->user_model->updateUser($user['id_user'], $data);
+        $this->session->set_flashdata('notification', 'Foto profil berhasil dihapus.');
         redirect('profile');
     }
 

@@ -55,6 +55,7 @@ class Auth extends CI_Controller
                         'email' => $data->email,
                         'role' => $data->role,
                         'status' => $subscriptionData->status, // Status diperbarui (expired/aktif)
+                        'foto_profile' => $data->foto_profile
                     );
                     $this->session->set_userdata($array);
 

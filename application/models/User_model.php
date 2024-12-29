@@ -35,6 +35,13 @@ class User_model extends CI_Model
         $this->db->update('users', $data);
     }
 
+    public function getUserPhoto($id)
+    {
+        $query = "SELECT foto_profile FROM users WHERE id_user = ?";
+
+        return $this->db->query($query, $id)->row();
+    }
+
     public function getTransactionByUserId($id)
     {
         $query = "

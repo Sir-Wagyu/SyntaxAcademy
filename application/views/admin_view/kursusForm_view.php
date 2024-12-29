@@ -24,10 +24,10 @@
             <div class="lg:w-1/2">
                 <div class="flex flex-col gap-2">
                     <label for="deskripsi" class="font-medium">Deskripsi</label>
-                    <!-- <input type="text" name="deskripsi" id="deskripsi" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 " required> -->
-                    <textarea name="deskripsi" id="deskripsi" rows="6" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 " required></textarea>
+                    <div id="editor" class="h-32 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:border-warna-400 " required></div>
+                    <input type="hidden" name="deskripsi" id="hiddenDeskripsi">
                 </div>
-                <button type="submit" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Kursus</button>
+                <button type=" submit" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Kursus</button>
             </div>
         </form>
     </div>
@@ -73,7 +73,43 @@ if (!empty($notification)) {
 <?php
 }
 ?>
-
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                [{
+                    font: []
+                }],
+                ["bold", "italic"],
+                ["link", "blockquote", "code-block", "image"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+            ]
+        }
+    });
+    var form = document.querySelector('form');
+    form.onsubmit = function() {
+        var content = quill.root.innerHTML;
+        document.querySelector('#hiddenDeskripsi').value = content;
+    };
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const closeModalButtons = document.querySelectorAll('[data-modal-hide]');

@@ -6,7 +6,7 @@
             <p class="text-sm text-gray-700 mb-3">ID - <?php echo $t->order_id ?></p>
             <h1 class="text-lg font-semibold">Paket Langganan <?php echo $t->namaPaket ?></h1>
             <div class="my-3 flex flex-col gap-1">
-                <p class="text-sm text-gray-500">Dibuat: <?php echo date('d-m-Y', strtotime($t->transaction_time)) ?></p>
+                <p class="text-sm text-gray-500">Dibuat: <?php echo date('d-M-Y', strtotime($t->transaction_time)) ?></p>
                 <?php if ($t->status_code == '201'): ?>
                     <p class="text-sm text-gray-500">Status: Pending</p>
                 <?php elseif ($t->status_code == '200'): ?>
