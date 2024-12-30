@@ -2,8 +2,7 @@
 
     <?php $user_status = $this->session->userdata('status'); ?>
     <?php if ($user_status == 'aktif') : ?>
-        <div>
-            <h1><?php echo $materi->judul; ?></h1>
+        <div class="lg:w-[80%] mx-auto text-lg">
             <p><?php echo $materi->konten; ?></p>
         </div>
         <div class="mt-4">
@@ -17,7 +16,41 @@
             }
             ?>
             <?php if ($nextMateri): ?>
-                <a href="<?php echo base_url('elearning/detail_materi/' . $kursus->id_kursus . '/' . $nextMateri->id_materi); ?>" class="px-6 py-3 rounded-md bg-warna-300 text-white font-semibold active:scale-95 transition-all select-none">Materi Selanjutnya</a>
+                <div class="w-full py-5 fixed left-0 right-0 bottom-0 bg-white border border-gray-300 flex justify-between items-center px-4 md:px-6 lg:px-8">
+                    <?php
+                    $prevMateri = null;
+                    foreach ($listMateri as $index => $m) {
+                        if ($m->id_materi == $materi->id_materi && isset($listMateri[$index - 1])) {
+                            $prevMateri = $listMateri[$index - 1];
+                            break;
+                        }
+                    }
+                    ?>
+                    <?php if ($prevMateri): ?>
+                        <a href="<?php echo base_url('elearning/detail_materi/' . $kursus->id_kursus . '/' . $prevMateri->id_materi); ?>" class="flex items-center gap-2 hover:text-warna-400"><i class="fa-solid fa-angle-left text-lg"></i> <span class="hidden md:inline">Materi Sebelumnya</span></a>
+                    <?php else: ?>
+                        <a href="<?php echo base_url('elearning/detail/' . $kursus->id_kursus) ?>" class="flex items-center gap-2 hover:text-warna-300"><i class="fa-solid fa-angle-left text-lg "></i> <span class="hidden md:inline">Kembali</span></a>
+                    <?php endif; ?>
+                    <p class="text-center w-[60%]"><?php echo $materi->judul; ?></p>
+                    <a href="<?php echo base_url('elearning/detail_materi/' . $kursus->id_kursus . '/' . $nextMateri->id_materi); ?>" class="flex items-center gap-2 hover:text-warna-300"><span class="hidden md:inline">Materi Selanjutnya</span> <i class="fa-solid fa-angle-right text-lg"></i></a>
+                </div>
+            <?php else: ?>
+                <div class="w-full py-5 fixed left-0 right-0 bottom-0 bg-white border border-gray-300 flex justify-between items-center px-4 md:px-6 lg:px-8">
+                    <?php
+                    $prevMateri = null;
+                    foreach ($listMateri as $index => $m) {
+                        if ($m->id_materi == $materi->id_materi && isset($listMateri[$index - 1])) {
+                            $prevMateri = $listMateri[$index - 1];
+                            break;
+                        }
+                    }
+                    ?>
+                    <?php if ($prevMateri): ?>
+                        <a href="<?php echo base_url('elearning/detail_materi/' . $kursus->id_kursus . '/' . $prevMateri->id_materi); ?>" class="flex items-center gap-2 hover:text-warna-300"><i class="fa-solid fa-angle-left text-lg "></i> <span class="hidden md:inline">Materi Sebelumnya</span></a>
+                    <?php endif; ?>
+                    <p class="text-center w-[60%]"><?php echo $materi->judul; ?></p>
+                    <a href="<?php echo base_url('elearning/detail/' . $kursus->id_kursus) ?>" class="flex items-center gap-2"><span class="hidden md:inline hover:text-warna-300">Selesai</span> <i class="fa-solid fa-angle-right text-lg"></i></a>
+                </div>
             <?php endif; ?>
         </div>
     <?php elseif ($user_status == 'free'): ?>

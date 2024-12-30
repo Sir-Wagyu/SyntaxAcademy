@@ -2,17 +2,17 @@
     <h1 class="text-xl md:text-2xl font-exo2 font-semibold mb-2">Kursus</h1>
     <div class="mb-12 px-4 pb-10 shadow-lg">
         <h2 class="text-lg md:text-lg font-exo2 font-semibold mb-4">Tambah Kursus</h2>
-        <form id="formTambahKursus" method="POST" action="<?php echo base_url("kursus/simpanKursus") ?>" class="flex flex-col lg:flex-row justify-center gap-3">
-            <div class="lg:w-1/2">
-                <div class="flex flex-col gap-2">
-                    <label for="judul" class="font-medium">Judul</label>
-                    <input type="text" name="judul" id="judul" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400" required>
-                </div>
-                <div class="flex flex-col gap-2 mt-4">
+        <form id="formTambahKursus" method="POST" action="<?php echo base_url("kursus/simpanKursus") ?>" class="flex flex-col justify-center gap-3">
+            <div class="flex flex-col gap-2">
+                <label for="judul" class="font-medium">Judul</label>
+                <input type="text" name="judul" id="judul" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400" required>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-2 mt-4">
+                <div class="flex flex-col gap-2 lg:w-1/2">
                     <label for="image_url" class="font-medium">Image_URL</label>
                     <input type="url" name="image_url" id="image_url" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 " required>
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
+                <div class="flex flex-col gap-2 lg:w-1/2">
                     <label for="level" class="font-medium">Level</label>
                     <select name="level" id="level" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
                         <option value="mudah">Mudah</option>
@@ -21,13 +21,13 @@
                     </select>
                 </div>
             </div>
-            <div class="lg:w-1/2">
+            <div class="mt-4">
                 <div class="flex flex-col gap-2">
                     <label for="deskripsi" class="font-medium">Deskripsi</label>
                     <div id="editor" class="h-32 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:border-warna-400 " required></div>
                     <input type="hidden" name="deskripsi" id="hiddenDeskripsi">
                 </div>
-                <button type=" submit" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Kursus</button>
+                <button type=" submit" class="text-center cursor-pointer w-full mt-7 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Kursus</button>
             </div>
         </form>
     </div>
@@ -79,28 +79,28 @@ if (!empty($notification)) {
         modules: {
             toolbar: [
                 [{
-                    header: [1, 2, 3, 4, 5, 6, false]
+                    'font': []
                 }],
                 [{
-                    font: []
+                    'size': []
                 }],
-                ["bold", "italic"],
-                ["link", "blockquote", "code-block", "image"],
                 [{
-                    list: "ordered"
+                    'align': []
+                }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{
+                    'list': 'ordered'
                 }, {
-                    list: "bullet"
+                    'list': 'bullet'
                 }],
                 [{
-                    script: "sub"
+                    'indent': '-1'
                 }, {
-                    script: "super"
+                    'indent': '+1'
                 }],
-                [{
-                    color: []
-                }, {
-                    background: []
-                }],
+                ['link', 'image'],
+                ['clean']
             ]
         }
     });

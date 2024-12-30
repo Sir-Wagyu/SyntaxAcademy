@@ -4,8 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-
-
     // minor bug -> status subscription tidak realtime -> buatin method model user buat ngeselect tb user + statusnya si tb user_subscription 
     public function prosesLogin()
     {

@@ -1,8 +1,8 @@
 <div class="px-4">
     <h1 class="text-xl md:text-2xl font-exo2 font-semibold mb-2">Tambah Materi</h1>
     <div class="mb-12 px-4 pb-10 shadow-lg">
-        <form id="formTambahMateri" method="POST" action="<?php echo base_url("materi/simpanMateri") ?>" class="flex flex-col lg:flex-row justify-center gap-3">
-            <div class="lg:w-1/2">
+        <form id="formTambahMateri" method="POST" action="<?php echo base_url("materi/simpanMateri") ?>" class="flex flex-col  justify-center gap-3">
+            <div class="">
                 <div class="flex flex-col gap-2">
                     <label for="kursus" class="font-medium">Kursus</label>
                     <select name="id_kursus" id="kursus" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
@@ -16,22 +16,24 @@
                         <?php endif; ?>
                     </select>
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
-                    <label for="judul_materi" class="font-medium">Judul Materi</label>
-                    <input type="text" name="judul_materi" id="judul_materi" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
-                </div>
-                <div class="flex flex-col gap-2 mt-4">
-                    <label for="video_url" class="font-medium">Video URL</label>
-                    <input type="url" name="video_url" id="video_url" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
+                <div class="flex flex-col lg:flex-row gap-3">
+                    <div class="lg:w-1/2 flex flex-col gap-2 mt-4">
+                        <label for="judul_materi" class="font-medium">Judul Materi</label>
+                        <input type="text" name="judul_materi" id="judul_materi" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
+                    </div>
+                    <div class="lg:w-1/2 flex flex-col gap-2 mt-4">
+                        <label for="video_url" class="font-medium">Video URL</label>
+                        <input type="url" name="video_url" id="video_url" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
+                    </div>
                 </div>
             </div>
-            <div class="lg:w-1/2">
+            <div class="">
                 <div class="flex flex-col gap-2">
                     <label for="konten" class="font-medium">Konten</label>
-                    <textarea name="konten" id="konten" rows="6" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 "></textarea>
+                    <div id="konten" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 "></div>
+                    <input type="hidden" name="konten" id="hiddenKonten">
+                    <button type="submit" data-modal-target="notification-modal" data-modal-toggle="notification-modal" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Materi</button>
                 </div>
-                <button type="submit" data-modal-target="notification-modal" data-modal-toggle="notification-modal" class="text-center cursor-pointer w-full mt-4 bg-warna-300 hover:bg-warna-400 active:scale-95 transition-all text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Tambah Materi</button>
-            </div>
         </form>
     </div>
 </div>
@@ -79,6 +81,44 @@ if (!empty($notification)) {
 <?php
 }
 ?>
+
+<script>
+    var quill = new Quill('#konten', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{
+                    'font': []
+                }],
+                [{
+                    'size': []
+                }],
+                [{
+                    'align': []
+                }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{
+                    'list': 'ordered'
+                }, {
+                    'list': 'bullet'
+                }],
+                [{
+                    'indent': '-1'
+                }, {
+                    'indent': '+1'
+                }],
+                ['link', 'image'],
+                ['clean']
+            ]
+        }
+    });
+    var formTambahMateri = document.querySelector('#formTambahMateri');
+    formTambahMateri.onsubmit = function() {
+        var content = quill.root.innerHTML;
+        document.querySelector('#hiddenKonten').value = content;
+    };
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 font-poppins">
+    <nav id="navbar" class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 font-poppins transition-all duration-300">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="<?php base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 md:hidden" alt="Flowbite Logo">
@@ -90,7 +90,7 @@
         </div>
     </nav>
 
-    <div class="">
+    <div class=" pt-20 pb-10">
 
         <?php
         if (empty($konten)) {
@@ -169,6 +169,8 @@
             });
         });
     </script>
+
+
 
     <script src="<?= base_url('node_modules/flowbite/dist/flowbite.min.js'); ?>"></script>
 </body>
