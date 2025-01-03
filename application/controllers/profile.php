@@ -13,21 +13,22 @@ class Profile extends CI_Controller
 
     public function index()
     {
-        $user = $this->session->userdata();
-        $data['user'] = $this->user_model->getUserById($user['id_user']);
+        $data['user'] = $this->user_model->getAllUserStatusById($this->session->userdata('id_user'));
         $data['konten'] = $this->load->view('userProfile/userProfile_view', $data, true);
         $this->load->view('userProfile/profile_view', $data);
     }
 
     public function ganti_password()
     {
-        $data['konten'] = $this->load->view('userProfile/gantiPassword_view', '', true);
+        $data['user'] = $this->user_model->getAllUserStatusById($this->session->userdata('id_user'));
+        $data['konten'] = $this->load->view('userProfile/gantiPassword_view', $data, true);
         $this->load->view('userProfile/profile_view', $data);
     }
 
     public function riwayat_transaksi()
     {
         $user = $this->session->userdata();
+        $data['user'] = $this->user_model->getAllUserStatusById($user['id_user']);
         $data['transaksi'] = $this->user_model->getTransactionByUserId($user['id_user']);
         $data['konten'] = $this->load->view('userProfile/riwayatTransaksi_view', $data, true);
         $this->load->view('userProfile/profile_view', $data);

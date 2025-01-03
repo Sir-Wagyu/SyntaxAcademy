@@ -47,11 +47,11 @@
 						<label class="font-medium">Password <span class="text-red-500">*</span></label>
 						<input type="password" name="password" id="password" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400">
 					</div>
-					<button type="submit" class="w-full mt-8 bg-warna-400 text-white font-roboto font-semibold rounded-md p-2 disabled:opacity-50">Masuk</button>
+					<button type="submit" class="w-full mt-8 bg-warna-300 text-white font-roboto font-semibold rounded-md py-2 md:py-3 disabled:opacity-50 active:scale-95 transition-all">Masuk</button>
 				</form>
 			</div>
 
-			<p class="mt-4 text-center font-roboto">Belum punya akun? <a href="<?= base_url('auth/register') ?>" class="text-warna-400 font-bold">Register</a></p>
+			<p class="mt-4 text-center font-roboto">Belum punya akun? <a href="<?= base_url('auth/register') ?>" class="text-warna-300 font-bold">Register</a></p>
 		</div>
 	</body>
 

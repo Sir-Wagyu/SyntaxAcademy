@@ -18,9 +18,11 @@
 <body>
     <nav id="navbar" class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 font-poppins transition-all duration-300">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="<?php base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 md:hidden" alt="Flowbite Logo">
-                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto">Syntax Academy</span>
+            <a href="<?php echo base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="<?php echo base_url('/assets/img/SA_Logo.png') ?>" class="h-9 md:hidden" alt="Flowbite Logo">
+                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto text-warna-300">
+                    Syntax Academy
+                </span>
             </a>
             <?php $role = $this->session->userdata('role') ?>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -34,7 +36,7 @@
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span class="sr-only">Open user menu</span>
-                            <?php $userProfile = $this->session->userdata('foto_profile') ?>
+                            <?php $userProfile = $user->foto_profile ?>
                             <?php if (!empty($userProfile)): ?>
                                 <img class="w-8 h-8 rounded-full" src="<?php echo base_url('uploads/profile_pictures/' . $userProfile) ?>" alt="user photo">
                             <?php else: ?>
@@ -44,8 +46,11 @@
                         <!-- Dropdown menu -->
                         <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                             <div class="px-4 py-3">
-                                <span class="block text-sm text-gray-900 dark:text-white"><?php echo $this->session->userdata('nama'); ?></span>
-                                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php echo $this->session->userdata('email'); ?></span>
+                                <div class="flex justify-between items-center">
+                                    <span class="block text-sm text-gray-900 dark:text-white"><?php echo $user->nama; ?></span>
+                                    <p class="block w-max text-xs  px-3 py-1 <?php echo $user->status == 'aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' ?>"> <?php echo $user->status ?></p>
+                                </div>
+                                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php echo $user->email; ?></span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
                                 <li>
@@ -90,8 +95,7 @@
         </div>
     </nav>
 
-    <div class=" pt-20 pb-10">
-
+    <div class="pt-20 font-poppins">
         <?php
         if (empty($konten)) {
             echo "";
@@ -101,6 +105,8 @@
         ?>
 
     </div>
+
+
 
     <script type="text/javascript">
         $('#pay-button').click(function(event) {

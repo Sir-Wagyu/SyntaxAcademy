@@ -3,6 +3,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
+    public function getAllUserStatusById($id)
+    {
+        $query = "
+            SELECT 
+                u.id_user,
+                u.nama,
+                u.nama_belakang,
+                u.email,
+                u.nomor_whatsapp,
+                u.tanggal_lahir,
+                u.jenis_kelamin, 
+                u.foto_profile,
+                u.role,
+                us.tanggal_mulai,
+                us.tanggal_selesai,
+                us.status
+            FROM users u
+            JOIN user_subscriptions us
+            ON u.id_user = us.users_id_user
+            where u.id_user = ?;
+        ";
+
+        return $this->db->query($query, $id)->row();
+    }
     public function getAllUsers()
     {
         $query = "
@@ -63,7 +87,7 @@ class User_model extends CI_Model
             ON 
                 p.subscriptions_id_langganan = s.id_langganan
             where
-                p.users_id_user = 8;
+                p.users_id_user = ?;
         ";
 
         return $this->db->query($query, $id)->result();
