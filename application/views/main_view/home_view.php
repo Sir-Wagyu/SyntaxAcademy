@@ -115,35 +115,35 @@
     <h2 class="text-center font-bold text-2xl md:text-3xl lg:text-4xl ">Apa Kata Mereka?</h2>
     <div class="overflow-x-auto overflow-y-hidden">
         <div class="w-max flex justify-center items-center gap-4 md:gap-6 lg:gap-10 mt-10 snap-mandatory snap-x mx-auto py-4">
-            <div class="snap-center bg-warna-100 h-72 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">
-                <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full mx-auto bg-gray-50">
-                    <img src="" alt="" class="w-full h-full object-cover rounded-full">
+            <div class="snap-center bg-warna-100 h-80 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">
+                <div class="w-20 h-20 lg:w-28 lg:h-28 rounded-full mx-auto bg-gray-50">
+                    <img src="<?php echo base_url('assets/img/aditya.png') ?>" alt="aditya" class="w-full h-full object-cover rounded-full">
                 </div>
-                <h3 class="text-center font-semibold text-lg mt-2 lg:mt-4">Nama</h3>
-                <p class="text-center text-sm mt-1">Posisi</p>
-                <p class="text-center text-sm mt-1">Komentar</p>
+                <h3 class="text-center font-semibold text-lg mt-2 lg:mt-4">Aditya Rahman</h3>
+                <p class="text-center text-sm mt-1">Frontend Developer</p>
+                <p class="text-center text-sm mt-1">"Materi yang diberikan sangat jelas, terutama bagian JavaScript. Saya bisa langsung menerapkannya di proyek pribadi, jadi sangat membantu pengembangan skill coding saya."</p>
             </div>
-            <div class="snap-center bg-warna-100 h-72 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">
-                <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full mx-auto bg-gray-50">
-                    <img src="" alt="" class="w-full h-full object-cover rounded-full">
+            <div class="snap-center bg-warna-100 h-80 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">
+                <div class="w-20 h-20 lg:w-28 lg:h-28 rounded-full mx-auto bg-gray-50">
+                    <img src="<?php echo base_url('assets/img/clara.png') ?>" alt="clara" class="w-full h-full object-cover rounded-full">
                 </div>
-                <h3 class="text-center font-semibold text-lg mt-2 lg:mt-4">Nama</h3>
-                <p class="text-center text-sm mt-1">Posisi</p>
-                <p class="text-center text-sm mt-1">Komentar</p>
+                <h3 class="text-center font-semibold text-lg mt-2 lg:mt-4">Clara Kusuma</h3>
+                <p class="text-center text-sm mt-1">UI/UX Designer</p>
+                <p class="text-center text-sm mt-1">"Sebagai UI/UX designer, saya sangat terbantu dengan materi yang mengajarkan dasar-dasar coding. Penjelasannya mudah dipahami dan langsung bisa diterapkan dalam pekerjaan saya."</p>
             </div>
-            <div class="snap-center bg-warna-100 h-72 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">
-                <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full mx-auto bg-gray-50">
-                    <img src="" alt="" class="w-full h-full object-cover rounded-full">
+            <div class="snap-center bg-warna-100 h-80 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">
+                <div class="w-20 h-20 lg:w-28 lg:h-28 rounded-full mx-auto bg-gray-50">
+                    <img src="<?php echo base_url('assets/img/rizki.png') ?>" alt="rizki" class="w-full h-full object-cover rounded-full">
                 </div>
-                <h3 class="text-center font-semibold text-lg mt-2 lg:mt-4">Nama</h3>
-                <p class="text-center text-sm mt-1">Posisi</p>
-                <p class="text-center text-sm mt-1">Komentar</p>
+                <h3 class="text-center font-semibold text-lg mt-2 lg:mt-4">Rizky Pratama</h3>
+                <p class="text-center text-sm mt-1">Software Engineer</p>
+                <p class="text-center text-sm mt-1">"Materi yang diberikan sangat aplikatif, terutama dalam pengembangan aplikasi. Pembahasannya mendalam dan mudah dipahami, sangat memperkuat kemampuan coding saya di dunia nyata"</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="mt-10 lg:mt-16 px-4 md:px-6 lg:px-32 xl:px-36 py-14 border-t-2 border-gray-200 flex flex-col md:flex-row justify-center md:justify-between lg:justify-start">
+<div class="mt-10 lg:mt-16 px-4 md:px-6 lg:px-32 xl:px-36 py-14 border-t-2 border-gray-200 flex flex-col md:flex-row justify-center md:justify-between lg:justify-start items-center md:items-start">
     <a href="<?php echo base_url("/"); ?>" class="h-max md:w-[40%] mb-8">
         <img src="<?php echo base_url('assets/img/SA_Logo3.png'); ?>" alt="logo" class="w-38">
     </a>

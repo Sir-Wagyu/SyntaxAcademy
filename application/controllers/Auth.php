@@ -96,11 +96,12 @@ class Auth extends CI_Controller
     {
 
         $nama = $this->input->post('nama');
+        $nama_belakang = $this->input->post('nama_belakang');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         $role = 'user';
 
-        if (empty($email) || empty($password) || empty($nama)) {
+        if (empty($email) || empty($password) || empty($nama) || empty($nama_belakang)) {
             $this->session->set_flashdata('pesanRegister', 'Masukin data diri kamu dulu ya!');
             redirect('/auth/register', 'refresh');
         }
@@ -108,6 +109,7 @@ class Auth extends CI_Controller
 
         $data = array(
             'nama' => $nama,
+            'nama_belakang' => $nama_belakang,
             'email' => $email,
             'password' => $password,
             'role' => $role,

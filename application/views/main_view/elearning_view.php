@@ -65,7 +65,7 @@
     </div>
 </div>
 
-<div class="mt-10 lg:mt-16 px-4 md:px-6 lg:px-32 xl:px-36 py-14 border-t-2 border-gray-200 flex flex-col md:flex-row justify-center md:justify-between lg:justify-start">
+<div class="mt-10 lg:mt-16 px-4 md:px-6 lg:px-32 xl:px-36 py-14 border-t-2 border-gray-200 flex flex-col md:flex-row justify-center md:justify-between lg:justify-start items-center md:items-start">
     <a href="<?php echo base_url("/"); ?>" class="h-max md:w-[40%] mb-8">
         <img src="<?php echo base_url('assets/img/SA_Logo3.png'); ?>" alt="logo" class="w-38">
     </a>

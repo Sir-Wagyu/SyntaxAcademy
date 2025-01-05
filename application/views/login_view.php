@@ -13,13 +13,13 @@
 			<div class="max-w-screen-xl flex flex-wrap items-center justify-center md:justify-between mx-auto p-4">
 				<a href="<?php echo base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"> -->
-					<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto">Syntax Academy</span>
+					<span class="self-center text-2xl font-semibold whitespace-nowrap text-warna-300 font-roboto">Syntax Academy</span>
 				</a>
 			</div>
 		</nav>
 		<div class="md:w-1/2 lg:w-[38%] xl:w-[30%]">
 			<div>
-				<img src="" alt="">
+				<img src="<?php echo base_url('assets/img/SA_Logo2.png') ?>" alt="logo" class="mx-auto mb-3">
 				<h1 class="text-xl md:text-2xl lg:text-3xl text-center font-exo2 font-semibold mb-1">Masuk ke Syntax Academy</h1>
 				<p class="text-base lg:text-lg text-gray-600 text-center font-roboto">Yuk lanjutin belajar kamu sekarang.</p>
 			</div>

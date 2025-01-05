@@ -11,7 +11,7 @@
     <!-- midtrans -->
     <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-g8nm10GiwT2y9Y20"></script>
+        data-client-key="SB-Mid-client-8l77DxYcxNCYM9f8"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 

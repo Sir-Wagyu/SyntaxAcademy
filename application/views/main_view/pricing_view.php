@@ -1,7 +1,11 @@
-<div class="max-w-screen-xl h-screen mx-auto pt-20 px-4 flex items-center justify-center">
-    <div class="w-full flex flex-col md:flex-row justify-center pt-[35rem] md:pt-0 flex-wrap">
+<div class=" flex flex-col justify-center items-center max-w-screen-xl mx-auto">
+    <div class="mt-10 md:mt-16 mb-14 md:mb-20">
+        <h2 class="text-center font-bold text-2xl md:text-3xl lg:text-4xl">Harga yang Pas, Ilmu yang Berkelas</h2>
+        <p class="text-center text-lg md:w-[80%] mx-auto mt-4">Pilih paket yang paling cocok untukmu dan nikmati akses penuh ke materi berkualitas.</p>
+    </div>
+    <div class="w-full flex flex-col md:flex-row justify-center md:pt-0 flex-wrap gap-10 md:gap-3 mb-20">
         <?php foreach ($subscriptions as $s): ?>
-            <div class=" py-7 px-4 bg-white w-full md:w-[33%] h-96 md:h-[25rem] border shadow rounded-md">
+            <div class=" py-7 px-4 bg-white w-full md:w-[30%] h-96 md:h-[28rem] border shadow rounded-md hover:ring hover:ring-warna-300 hover:ring-opacity-50 transition-all">
                 <form class="w-full h-full" id="payment-form" method="post" action="<?= site_url() ?>/snap/finish">
                     <input type="hidden" name="result_type" id="result-type" value="">
                     <input type="hidden" name="result_data" id="result-data" value="">
@@ -18,9 +22,9 @@
 
                     <div class="flex flex-col items-center justify-between h-full">
                         <div class="flex flex-col items-center">
-                            <h2><?= $s->namaPaket ?></h2>
+                            <h2 class="text-lg font-medium"><?= $s->namaPaket ?></h2>
                             <h3><?= $s->durasi ?> Bulan</h3>
-                            <h1 class="text-3xl font-semibold">Rp <?= number_format($s->harga, 0, ',', '.') ?></h1>
+                            <h1 class="mt-4 text-3xl md:text-4xl font-semibold">Rp <?= number_format($s->harga, 0, ',', '.') ?></h1>
                         </div>
 
                         <div class="">
@@ -55,7 +59,7 @@
     </div>
 </div>
 
-<div class="mt-10 lg:mt-16 px-4 md:px-6 lg:px-32 xl:px-36 py-14 border-t-2 border-gray-200 flex flex-col md:flex-row justify-center md:justify-between lg:justify-start">
+<div class="mt-10 lg:mt-16 px-4 md:px-6 lg:px-32 xl:px-36 py-14 border-t-2 border-gray-200 flex flex-col md:flex-row justify-center md:justify-between lg:justify-start items-center md:items-start">
     <a href="<?php echo base_url("/"); ?>" class="h-max md:w-[40%] mb-8">
         <img src="<?php echo base_url('assets/img/SA_Logo3.png'); ?>" alt="logo" class="w-38">
     </a>

@@ -15,13 +15,13 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="<?php echo base_url("/") ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"> -->
-                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-roboto">Syntax Academy</span>
+                <span class="hidden md:block self-center text-2xl font-semibold whitespace-nowrap text-warna-300 font-roboto">Syntax Academy</span>
             </a>
         </div>
     </nav>
     <div class="md:w-1/2 lg:w-[38%] xl:w-[30%]">
         <div>
-            <img src="" alt="">
+            <img src="<?php echo base_url('assets/img/SA_Logo2.png') ?>" alt="logo" class="mx-auto mb-3">
             <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-exo2 font-semibold mb-1">Pendaftaran Akun</h1>
             <p class="text-base lg:text-lg text-gray-600 text-center font-roboto">Yuk daftarin akunmu sekarang.</p>
         </div>
@@ -41,10 +41,13 @@
         <div class="w-full font-roboto  <?= $pesanRegister ? 'mt-0' : 'mt-12'; ?>">
             <form action="<?= site_url('Auth/prosesRegister') ?>" method="POST">
                 <div class="flex flex-col gap-2">
-                    <label for="nama" class="font-medium">Nama Lengkap <span class="text-red-500">*</span></label>
-                    <input type="nama" name="nama" id="nama" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
+                    <label for="nama" class="font-medium">Nama Depan <span class="text-red-500">*</span></label>
+                    <input type="text" name="nama" id="nama" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
                 </div>
-
+                <div class="flex flex-col gap-2 mt-4">
+                    <label for="nama_belakang" class="font-medium">Nama Belakang <span class="text-red-500">*</span></label>
+                    <input type="text" name="nama_belakang" id="nama_belakang" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
+                </div>
                 <div class="flex flex-col gap-2 mt-4">
                     <label for="email" class="font-medium">Email <span class="text-red-500">*</span></label>
                     <input type="email" name="email" id="email" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:border-warna-400 ">
