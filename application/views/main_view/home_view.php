@@ -5,17 +5,17 @@
 </div>
 
 
-<div class="px-4 md:px-6 lg:px-32 xl:px-36 py-10 lg:py-14  bg-warna-200">
+<div class="px-4 md:px-6 lg:px-32 xl:px-36 py-10 lg:py-14  bg-warna-300 text-white">
     <div class="flex lg:flex-row justify-between items-center">
         <h2 class="text-xl lg:text-3xl font-semibold">Kelas Unggulan</h2>
-        <a href="<?php echo base_url("elearning") ?>" class="flex gap-2 items-center text-warna-300 hover:text-warna-400 text-lg active:scale-95 transition-all">
+        <a href="<?php echo base_url("elearning") ?>" class="flex gap-2 items-center text-white hover:text-gray-50 text-lg active:scale-95 transition-all">
             <p href="" class="hidden md:block">Lihat Semua Kelas </p>
             <i class="fa-solid fa-angle-right"></i>
         </a>
     </div>
     <div class=" mt-4 lg:mt-8 overflow-x-auto overflow-y-hidden ">
         <div class="flex gap-3 w-max py-1 px-1">
-            <a href="<?php echo base_url("elearning/detail/62") ?>" class="bg-white w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-warna-300">
+            <a href="<?php echo base_url("elearning/detail/62") ?>" class="bg-white w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/html.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
                     <h2 class="font-roboto font-medium"></h2>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </a>
-            <a href="<?php echo base_url("elearning/detail/63") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-warna-300">
+            <a href="<?php echo base_url("elearning/detail/63") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/css.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover bg-gray-300">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
                     <h2 class="font-roboto font-medium"></h2>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </a>
-            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-warna-300">
+            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/javascript.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover bg-gray-300">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
                     <h2 class="font-roboto font-medium"></h2>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </a>
-            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-warna-300">
+            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/bootstrap.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover bg-gray-300">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
                     <h2 class="font-roboto font-medium"></h2>
@@ -111,8 +111,8 @@
     </div>
 </div>
 
-<div class="px-4 md:px-6 lg:px-32 xl:px-36 py-10 lg:py-16  bg-warna-200">
-    <h2 class="text-center font-bold text-2xl md:text-3xl lg:text-4xl ">Apa Kata Mereka?</h2>
+<div class="px-4 md:px-6 lg:px-32 xl:px-36 py-10 lg:py-16  bg-warna-300">
+    <h2 class="text-center font-bold text-2xl md:text-3xl lg:text-4xl text-white ">Apa Kata Mereka?</h2>
     <div class="overflow-x-auto overflow-y-hidden">
         <div class="w-max flex justify-center items-center gap-4 md:gap-6 lg:gap-10 mt-10 snap-mandatory snap-x mx-auto py-4">
             <div class="snap-center bg-warna-100 h-80 lg:h-96 aspect-[5/6] rounded-lg p-6 hover:scale-105 transition-all">

@@ -19,6 +19,21 @@ class Elearning extends CI_Controller
         $this->load->view('main_view/main_view', $data);
     }
 
+    public function filter()
+    {
+        $levels = $this->input->get('level');
+        $kursus = $this->Kursus_model->get_kursus_by_level($levels);
+        echo json_encode($kursus);
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->get("keyword");
+        $searchResult = $this->Kursus_model->search_kursus($keyword);
+
+        echo json_encode($searchResult);
+    }
+
     public function detail($id)
     {
         $data['user'] = $this->User_model->getAllUserStatusById($this->session->userdata('id_user'));

@@ -58,4 +58,38 @@ class Kursus_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    public function get_kursus_by_level($levels)
+    {
+        $this->db->select('k.id_kursus, k.judul, k.image_url, k.level, COUNT(m.id_materi) AS jumlah_materi');
+        $this->db->from('kursus k');
+        $this->db->join('materi m', 'k.id_kursus = m.kursus_id_kursus', 'left');
+
+        // Tambahkan filter level jika ada
+        if (!empty($levels)) {
+            $levelsArray = explode(',', $levels); // Jika level dalam bentuk string, pisahkan dengan koma
+            $this->db->where_in('k.level', $levelsArray);
+        }
+
+        // Group by untuk menghindari duplikasi data
+        $this->db->group_by('k.id_kursus, k.judul, k.image_url, k.level');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function search_kursus($keyword)
+    {
+        $this->db->select('k.id_kursus, k.judul, k.image_url, k.level, COUNT(m.id_materi) AS jumlah_materi');
+        $this->db->from('kursus k');
+        $this->db->join('materi m', 'k.id_kursus = m.kursus_id_kursus', 'left');
+
+        if (!empty($keyword)) {
+            $this->db->like('k.judul', $keyword);
+        }
+
+        $this->db->group_by('k.id_kursus, k.judul, k.image_url, k.level');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

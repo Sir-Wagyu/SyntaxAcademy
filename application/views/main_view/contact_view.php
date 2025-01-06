@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center items-center">
-    <div class="bg-warna-300 py-20 md:py-28 lg:py-32 text-white flex  justify-center items-center px-4 md:px-6 lg:px-32 xl:px-36">
+    <div class="bg-warna-300 py-20 md:py-28 text-white flex  justify-center items-center px-4 md:px-6 lg:px-32 xl:px-36">
         <div class="w-full md:w-[50%] lg:w-[40%] flex flex-col justify-center">
             <p class="mx-auto md:mx-0 text-center md:text-left font-medium text-xl pb-1 border-b-2 border-white w-max">Tentang Kami</p>
             <h2 class="text-center md:text-left font-bold text-2xl md:text-3xl lg:text-4xl mt-3">Apa itu Syntax Academy?</h2>
@@ -9,33 +9,9 @@
             <img src="<?php echo base_url('assets/img/tentang.svg'); ?>" alt="icon" class="w-[60%] object-contain mx-auto">
         </div>
     </div>
-    <div class="w-full flex flex-col justify-center items-center px-4 md:px-6 lg:px-32 xl:px-36">
-        <h3 class="text-center font-bold text-2xl md:text-3xl mt-16 md:mt-20">Kontak Kami</h3>
-        <div class="flex items-center justify-center gap-8 mt-3">
-            <a href="https://www.instagram.com/whyuuunr/" target="_blank" class="flex flex-col items-center gap-2 mt-5 group transition-all active:scale-95">
-                <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
-                    <i class="fa-brands fa-instagram text-3xl md:text-4xl text-white group-hover:text-warna-300"></i>
-                </div>
-                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">Instagram</h4>
-            </a>
-            <a href="https://www.linkedin.com/in/wahyunurh/" target="_blank" class="flex flex-col items-center gap-2 mt-5 group transition-all active:scale-95">
-                <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
-                    <i class="fa-brands fa-linkedin-in text-2xl md:text-3xl text-white group-hover:text-warna-300"></i>
-                </div>
-                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">LinkedIn</h4>
-            </a>
-            <div class="flex flex-col items-center gap-2 mt-5 group transition-all active:scale-95">
-                <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
-                    <i class="fa-brands fa-discord text-2xl md:text-3xl text-white group-hover:text-warna-300"></i>
-                </div>
-                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">Discord</h4>
-            </div>
-
-        </div>
-    </div>
     <div class="w-full px-4 md:px-6 lg:px-32 xl:px-36">
         <h3 class="text-center font-bold text-2xl md:text-3xl mt-16 md:mt-20">Pertanyaan yang Sering Ditanya</h3>
-        <div class="mt-5 w-full md:w-[60%] lg:w-[50%] mx-auto">
+        <div class="mt-5 w-full md:w-[60%] lg:w-[70%] mx-auto">
             <button class="group w-full justify-center border-b-2 border-warna-300 py-5 px-2 mt-4 transition-all text-left">
                 <div class="flex items-center justify-between hover:text-warna-300">
                     <p class="font-medium md:text-lg">Apa saja kursus yang tersedia di platform ini?</p>
@@ -78,6 +54,30 @@
                 </div>
                 <p class="mt-2 hidden group-focus:block">Jika ada masalah teknis atau kesulitan dalam materi, Anda bisa menghubungi tim support kami melalui formulir atau email untuk mendapatkan bantuan.</p>
             </button>
+        </div>
+    </div>
+    <div class="w-full flex flex-col justify-center items-center px-4 md:px-6 lg:px-32 xl:px-36">
+        <h3 class="text-center font-bold text-2xl md:text-3xl mt-16 md:mt-20">Media Sosial Kami</h3>
+        <div class="flex items-center justify-center gap-8 mt-3">
+            <a href="https://www.instagram.com/whyuuunr/" target="_blank" class="flex flex-col items-center gap-2 mt-5 group transition-all active:scale-95">
+                <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
+                    <i class="fa-brands fa-instagram text-3xl md:text-4xl text-white group-hover:text-warna-300"></i>
+                </div>
+                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">Instagram</h4>
+            </a>
+            <a href="https://www.linkedin.com/in/wahyunurh/" target="_blank" class="flex flex-col items-center gap-2 mt-5 group transition-all active:scale-95">
+                <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
+                    <i class="fa-brands fa-linkedin-in text-2xl md:text-3xl text-white group-hover:text-warna-300"></i>
+                </div>
+                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">LinkedIn</h4>
+            </a>
+            <a href="https://github.com/Sir-Wagyu" target="_blank" class="flex flex-col items-center gap-2 mt-5 group transition-all active:scale-95">
+                <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
+                    <i class="fa-brands fa-github text-3xl md:text-4xl text-white group-hover:text-warna-300"></i>
+                </div>
+                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">Discord</h4>
+            </a>
+
         </div>
     </div>
 </div>
