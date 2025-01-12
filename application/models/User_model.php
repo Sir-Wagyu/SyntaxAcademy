@@ -37,10 +37,21 @@ class User_model extends CI_Model
             u.role,
             us.tanggal_mulai,
             us.tanggal_selesai,
+            sum(p.gross_amount) as gross_amount,
             us.status
             FROM users u
             JOIN user_subscriptions us
-            ON u.id_user = us.users_id_user;
+            ON u.id_user = us.users_id_user
+            LEFT JOIN pembayaran p
+            ON u.id_user = p.users_id_user
+        GROUP BY
+			u.id_user,
+            u.nama,
+            u.email,
+            u.role,
+            us.tanggal_mulai,
+            us.tanggal_selesai,
+            us.status
         ";
 
         return $this->db->query($query)->result();
@@ -119,5 +130,52 @@ class User_model extends CI_Model
         ";
 
         return $this->db->query($query, $id)->row();
+    }
+
+    public function getTransactionByIdForPDF($id)
+    {
+        $query = "
+                SELECT 
+                    p.order_id, 
+                    u.nama,
+                    u.nama_belakang,
+                    u.email,
+                    s.namaPaket, 
+                    p.status_code, 
+                    p.gross_amount, 
+                    p.transaction_time, 
+                    p.payment_type, 
+                    p.bank, 
+                    p.va_number, 
+                    p.pdf_url 
+                FROM 
+                    pembayaran p 
+                JOIN 
+                    users u 
+                ON 
+                    p.users_id_user = u.id_user
+                JOIN
+                    subscriptions s 
+                ON 
+                    p.subscriptions_id_langganan = s.id_langganan
+                where
+                    p.order_id = ?;
+        ";
+
+        return $this->db->query($query, $id)->row();
+    }
+
+    public function totalUserandGrossAmount()
+    {
+        $query = "
+   SELECT 
+    COUNT(distinct id_user) AS total_users,
+    SUM(p.gross_amount) AS total_gross_amount
+FROM users u
+LEFT JOIN pembayaran p
+ON u.id_user = p.users_id_user;
+        ";
+
+        return $this->db->query($query)->row();
     }
 }

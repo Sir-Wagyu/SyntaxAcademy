@@ -92,4 +92,17 @@ class Kursus_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function getTotalKursusAndMateri()
+    {
+        $query = "
+        select 
+        count(k.id_kursus) as total_kursus,
+        count(m.id_materi) as total_materi
+        from kursus k
+        left join materi m
+        on id_kursus = kursus_id_kursus;";
+
+        return $this->db->query($query)->row();
+    }
 }

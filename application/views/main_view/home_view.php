@@ -15,13 +15,13 @@
     </div>
     <div class=" mt-4 lg:mt-8 overflow-x-auto overflow-y-hidden ">
         <div class="flex gap-3 w-max py-1 px-1">
-            <a href="<?php echo base_url("elearning/detail/62") ?>" class="bg-white w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
+            <a href="<?php echo base_url("elearning/detail/62") ?>" class="bg-white text-black w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/html.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
-                    <h2 class="font-roboto font-medium"></h2>
+                    <h2 class="font-roboto font-medium md:text-lg lg:text-xl">HTML DASAR</h2>
                     <div class="">
                         <div class="flex justify-between text-sm ">
-
+                            <p>Mudah</p>
                         </div>
                         <button class="hidden md:block mt-4 text-center w-full bg-warna-300 text-white py-2 rounded-md active:scale-95 transition-all">
                             Mulai Belajar
@@ -29,13 +29,13 @@
                     </div>
                 </div>
             </a>
-            <a href="<?php echo base_url("elearning/detail/63") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
+            <a href="<?php echo base_url("elearning/detail/63") ?>" class="bg-warna-100 text-black w-60 max-w-80 xl:w-[18.5rem]  aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/css.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover bg-gray-300">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
-                    <h2 class="font-roboto font-medium"></h2>
+                    <h2 class="font-roboto font-medium md:text-lg lg:text-xl">CSS Dasar</h2>
                     <div class="">
                         <div class="flex justify-between text-sm ">
-
+                            <p>Mudah</p>
                         </div>
                         <button class="hidden md:block mt-4 text-center w-full bg-warna-300 text-white py-2 rounded-md active:scale-95 transition-all">
                             Mulai Belajar
@@ -43,27 +43,27 @@
                     </div>
                 </div>
             </a>
-            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
+            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 text-black w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/javascript.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover bg-gray-300">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
-                    <h2 class="font-roboto font-medium"></h2>
+                    <h2 class="font-roboto font-medium md:text-lg lg:text-xl">DASAR JAVASCRIPT</h2>
                     <div class="">
                         <div class="flex justify-between text-sm ">
-
+                            <p>Menengah</p>
                         </div>
-                        <button class="hidden md:block mt-4 text-center w-full bg-warna-300 text-white py-2 rounded-md active:scale-95 transition-all">
+                        <button class="hidden md:block mt-4 text-center w-full bg-warna-300  text-white py-2 rounded-md active:scale-95 transition-all">
                             Mulai Belajar
                         </button>
                     </div>
                 </div>
             </a>
-            <a href="<?php echo base_url("elearning/detail/64") ?>" class="bg-warna-100 w-60 max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
+            <a class="bg-warna-100 w-60 text-black max-w-80 xl:w-[18.5rem] aspect-[5/4] xs:aspect-[5/6] border shadow-md rounded-lg active:scale-95 transition-all overflow-hidden hover:ring hover:ring-white">
                 <img src="<?php echo base_url('assets/img/bootstrap.jpg') ?>" alt="kursus_image" class="h-[55%] md:h-[45%] w-full object-cover bg-gray-300">
                 <div class="h-[45%] md:h-[55%] p-3 md:p-4 flex flex-col justify-between">
-                    <h2 class="font-roboto font-medium"></h2>
+                    <h2 class="font-roboto font-medium md:text-lg lg:text-xl">BOOTSTRAP</h2>
                     <div class="">
                         <div class="flex justify-between text-sm ">
-
+                            <p>Menengah</p>
                         </div>
                         <button class="hidden md:block mt-4 text-center w-full bg-warna-300 text-white py-2 rounded-md active:scale-95 transition-all">
                             Mulai Belajar
@@ -80,8 +80,8 @@
     <h2 class="text-center font-bold text-2xl md:text-3xl lg:text-4xl mt-16 md:mt-20">Kenapa Belajar Coding <br> di Syntax Academy</h2>
     <div class="w-full flex flex-col gap-16 lg:gap-20 mt-10 lg:mt-14">
         <div class="w-full md:w-[80%] xl:w-[75%] flex flex-col items-center mx-auto">
-            <div class="w-full h-60 md:h-96 xl:h-[28rem] rounded-lg bg-gray-300">
-                <img src="" alt="">
+            <div class="w-full h-60 md:h-96 xl:h-[32rem] rounded-lg bg-white">
+                <img src="<?php echo base_url("assets/img/aksesKelas2.png") ?>" alt="online-learn" class="mx-auto h-full contain">
             </div>
             <div class="w-full  flex flex-col items-center">
                 <h3 class="mt-7 text-center font-semibold  text-2xl md:text-3xl">Belajar Dimana Aja</h3>
@@ -89,9 +89,8 @@
             </div>
         </div>
         <div class="w-full md:w-[80%]  xl:w-[75%] flex flex-col items-center mx-auto">
-            <div class="w-full h-60 md:h-96 xl:h-[28rem] rounded-lg bg-gray-300">
-                <img src="" alt="">
-
+            <div class="w-full h-60 md:h-96 xl:h-[32rem] rounded-lg bg-white">
+                <img src="<?php echo base_url("assets/img/aksesKelas.png") ?>" alt="akses-kelas" class="mx-auto h-full contain">
             </div>
             <div class="w-full  flex flex-col items-center">
                 <h3 class="mt-7 text-center font-semibold  text-2xl md:text-3xl">Akses Ke Semua Kelas</h3>
@@ -99,9 +98,8 @@
             </div>
         </div>
         <div class="w-full md:w-[80%]  xl:w-[75%]  flex flex-col items-center mx-auto">
-            <div class="w-full h-60 md:h-96 xl:h-[28rem] rounded-lg bg-gray-300">
-                <img src="" alt="">
-
+            <div class="w-full h-60 md:h-96 xl:h-[32rem] rounded-lg bg-white">
+                <img src="<?php echo base_url("assets/img/beginner.png") ?>" alt="beginner" class="mx-auto h-full contain">
             </div>
             <div class="w-full flex flex-col items-center">
                 <h3 class="mt-7 text-center font-semibold  text-2xl md:text-3xl">Materi Mudah Untuk Pemula</h3>

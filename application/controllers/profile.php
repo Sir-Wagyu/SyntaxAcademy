@@ -119,5 +119,22 @@ class Profile extends CI_Controller
         redirect('profile/ganti_password');
     }
 
-    public function DownloadInvoice($id_transaksi) {}
+    public function downloadInvoice($id_transaksi)
+    {
+        $this->load->library('PdfGenerator');
+        $data['transaksi'] = $this->user_model->getTransactionByIdForPDF($id_transaksi);
+        $html = $this->load->view('userProfile/invoice_pdf', $data, true);
+        $this->pdfgenerator->generate($html, 'invoice_' . $id_transaksi, 'A4', 'portrait', TRUE);
+
+        // $this->load->library("PdfGenerator");
+        // $data['title'] = "Invoice";
+        // $file_pdf = $data['title'];
+        // $paper = "A4";
+        // $orientation = "portrait";
+        // $html = $this->load->view('userProfile/invoice_pdf', $data, true);
+        // $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation, TRUE);
+
+        // $data["transaksi"] = $this->user_model->getTransactionByIdForPDF($id_transaksi);
+        // $this->load->view('userProfile/invoice_pdf', $data);
+    }
 }

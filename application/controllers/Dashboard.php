@@ -9,11 +9,14 @@ class Dashboard extends CI_Controller
         $this->load->model('validasi');
         $this->load->model('kursus_model');
         $this->load->model('materi_model');
+        $this->load->model('user_model');
         $this->validasi->validasi_admin();
     }
     public function index()
     {
-        $data['konten'] = $this->load->view('admin_view/dashboard', '', true);
+        $data['users'] = $this->user_model->totalUserandGrossAmount();
+        $data['kelas'] = $this->kursus_model->getTotalKursusAndMateri();
+        $data['konten'] = $this->load->view('admin_view/dashboard', $data, true);
         $this->load->view('admin_view/admin_view', $data);
     }
 

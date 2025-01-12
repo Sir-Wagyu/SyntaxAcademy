@@ -21,6 +21,9 @@
                 <th scope="col" class="px-6 py-3">
                     Tanggal Selesai
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Total Pembayaran
+                </th>
 
                 </tr>
             </thead>
@@ -63,13 +66,22 @@
                                     ?>
                                 </p>
                             </td>
-                            </td>
                             <td class="px-6 py-4">
                                 <p class="line-clamp-2">
                                     <?php if (empty($u->tanggal_selesai)) {
                                         echo "Belum berlangganan";
                                     } else {
                                         echo $u->tanggal_selesai;
+                                    }
+                                    ?>
+                                </p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <p class="line-clamp-2">
+                                    <?php if (empty($u->tanggal_selesai)) {
+                                        echo "Belum berlangganan";
+                                    } else {
+                                        echo "Rp. " . number_format($u->gross_amount, 0, ',', '.');
                                     }
                                     ?>
                                 </p>

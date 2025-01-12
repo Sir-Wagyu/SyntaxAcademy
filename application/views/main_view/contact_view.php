@@ -75,7 +75,7 @@
                 <div class="bg-warna-300 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full group-hover:bg-transparent group-hover:border-2 group-hover:border-warna-300 ">
                     <i class="fa-brands fa-github text-3xl md:text-4xl text-white group-hover:text-warna-300"></i>
                 </div>
-                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">Discord</h4>
+                <h4 class="font-semibold group-hover:text-warna-300 md:text-lg">Github</h4>
             </a>
 
         </div>

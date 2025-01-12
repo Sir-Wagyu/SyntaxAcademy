@@ -123,7 +123,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('pesanRegister', 'email sudah terdaftar');
             redirect('auth/register', 'refresh');
         } else {
-            $sql = "insert into users (nama, email, password, role, created_at) values (?,?,?,?,?)";
+            $sql = "insert into users (nama,nama_belakang, email, password, role, created_at) values (?,?,?,?,?,?)";
             $this->db->query($sql, $data);
 
 
