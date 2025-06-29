@@ -50,8 +50,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal A
 
 1.  **Clone Repositori**
     ```bash
-    git clone [URL_REPOSITORI_ANDA]
-    cd [NAMA_FOLDER_PROYEK]
+    git clone https://github.com/Sir-Wagyu/SyntaxAcademy.git
     ```
 
 2.  **Instal Dependensi PHP**
